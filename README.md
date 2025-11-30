@@ -1,1 +1,0 @@
-# school_club_manager_system
