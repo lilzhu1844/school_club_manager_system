@@ -100,12 +100,12 @@ export default {
 .group { width:100%; margin-bottom:12px }
 .label { display:block; font-size:14px; color:#333; margin-bottom:6px }
 .row { display:flex; align-items:center; gap:8px }
-.input { width:100%; border:1px solid #e6e6e6; border-radius:12px; padding:12px 14px; font-size:14px; background:#fafafa }
+.input { width:100%; border:1px solid #e6e6e6; border-radius:12px; padding:20px 14px; font-size:14px; background:#fafafa; box-sizing:border-box }
 .input:focus { border-color:#007AFF; background:#fff }
 .flex { flex:1 }
-.toggle { font-size:12px; padding:8px 10px; background:#f5f7ff; color:#2e5cff; border-radius:10px }
+.toggle { font-size:12px; padding:5px 10px; background:#f5f7ff; color:#2e5cff; border-radius:10px; box-sizing:border-box }
 .gender { width:50%; display:flex; gap:6px; justify-content:start }
-.gbtn { padding:6px 10px; border:1px solid #e0e0ff; border-radius:14px; background:#fff; color:#7e78ff; font-size:12px }
+.gbtn { padding:2px 10px; border:1px solid #e0e0ff; border-radius:14px; background:#fff; color:#7e78ff; font-size:12px; box-sizing:border-box }
 .on { background:#e9e7ff }
 .err { margin-top:6px; font-size:12px; color:#e34a4a }
 .primary { width:100%; margin-top:8px; background:#2ecc71; color:#fff; border:none; border-radius:12px; font-weight:600 }
