@@ -1,40 +1,77 @@
 <template>
   <view class="page">
-    <view class="header"><text class="htitle">注册</text></view>
-    <view class="card">
-      <view class="avatar green"></view>
-      <view class="brand">快乐社团平台</view>
-      <view class="subtitle">创建您的账号</view>
-      <view class="group">
-        <input class="input" v-model="form.account" placeholder="用户名" @blur="validate('account')" />
-        <text v-if="errors.account" class="err">{{ errors.account }}</text>
-      </view>
-      <view class="group">
-        <input class="input" v-model="form.name" placeholder="姓名" />
-      </view>
-      <view class="group">
-        <input class="input" v-model="extra.college" placeholder="学院" />
-      </view>
-      <view class="group">
-        <view class="gender">
-          <button class="gbtn" :class="extra.gender==='male'?'on':''" @tap="extra.gender='male'">男</button>
-          <button class="gbtn" :class="extra.gender==='female'?'on':''" @tap="extra.gender='female'">女</button>
-          <button class="gbtn" :class="extra.gender==='secret'?'on':''" @tap="extra.gender='secret'">保密</button>
+    <!-- 登录卡片容器（垂直居中） -->
+    <view class="register-container">
+      <view class="card">
+        <!-- 卡片头部 -->
+        <view class="card-header">
+          <view class="avatar-wrapper">
+            <view class="avatar-icon"></view>
+          </view>
+          <view class="title-group">
+            <view class="page-title">注册</view>
+            <view class="brand">快乐社团平台</view>
+            <view class="subtitle">创建您的专属账号</view>
+          </view>
+        </view>
+
+        <!-- 分割线 -->
+        <view class="divider"></view>
+
+        <!-- 表单区域 -->
+        <view class="form-content">
+          <!-- 用户名 -->
+          <view class="form-group">
+            <input class="form-input" v-model="form.account" placeholder="用户名（至少4位）" @blur="validate('account')" />
+            <text v-if="errors.account" class="error-text">{{ errors.account }}</text>
+          </view>
+
+          <!-- 姓名 -->
+          <view class="form-group">
+            <input class="form-input" v-model="form.name" placeholder="姓名" />
+          </view>
+
+          <!-- 学院 -->
+          <view class="form-group">
+            <input class="form-input" v-model="extra.college" placeholder="学院" />
+          </view>
+
+          <!-- 性别选择 -->
+          <view class="form-group">
+            <view class="gender-selector">
+              <button class="gender-btn" :class="{ active: extra.gender==='male' }" @tap="extra.gender='male'">男</button>
+              <button class="gender-btn" :class="{ active: extra.gender==='female' }" @tap="extra.gender='female'">女</button>
+              <button class="gender-btn" :class="{ active: extra.gender==='secret' }" @tap="extra.gender='secret'">保密</button>
+            </view>
+          </view>
+
+          <!-- 密码 -->
+          <view class="form-group">
+            <view class="password-row">
+              <input class="form-input password-input" :password="hidePwd" v-model="form.password" placeholder="密码（至少6位）" @blur="validate('password')" />
+              <button class="pwd-toggle-btn" @tap="hidePwd=!hidePwd">{{ hidePwd? '显示' : '隐藏' }}</button>
+            </view>
+            <text v-if="errors.password" class="error-text">{{ errors.password }}</text>
+          </view>
+
+          <!-- 确认密码 -->
+          <view class="form-group">
+            <input class="form-input" :password="true" v-model="extra.confirm" placeholder="确认密码" @blur="validate('confirm')" />
+            <text v-if="errors.confirm" class="error-text">{{ errors.confirm }}</text>
+          </view>
+        </view>
+
+        <!-- 分割线 -->
+        <view class="divider"></view>
+
+        <!-- 操作区域 -->
+        <view class="action-area">
+          <button class="register-btn" :loading="loading" :disabled="loading" @tap="submit">注册</button>
+          <view class="login-tip">
+            已有账号？<text class="login-link" @tap="goLogin">立即登录</text>
+          </view>
         </view>
       </view>
-      <view class="group">
-        <view class="row">
-          <input class="input flex" :password="hidePwd" v-model="form.password" placeholder="密码（至少6位）" @blur="validate('password')" />
-          <button class="toggle" @tap="hidePwd=!hidePwd">{{ hidePwd? '显示' : '隐藏' }}</button>
-        </view>
-        <text v-if="errors.password" class="err">{{ errors.password }}</text>
-      </view>
-      <view class="group">
-        <input class="input" :password="true" v-model="extra.confirm" placeholder="确认密码" @blur="validate('confirm')" />
-        <text v-if="errors.confirm" class="err">{{ errors.confirm }}</text>
-      </view>
-      <button class="primary" :loading="loading" :disabled="loading" @tap="submit">注册</button>
-      <view class="tip">已有账号？<text class="action" @tap="goLogin">立即登录</text></view>
     </view>
   </view>
 </template>
@@ -88,27 +125,259 @@ export default {
 }
 </script>
 
-<style>
-.page { min-height:100vh; display:flex; flex-direction:column; background:#f7f8fa; padding:0 16px }
-.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
-.htitle { color:#fff; font-weight:600 }
-.card { width:92%; max-width:380px; margin:20px auto 24px auto; background:#fff; border-radius:14px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); padding:18px; display:flex; flex-direction:column; align-items:center }
-.avatar { width:72px; height:72px; border-radius:50%; background:#7e78ff; opacity:0.9 }
-.green { background:#2ecc71 }
-.brand { margin:8px 0 6px 0; color:#333; font-weight:600; font-size:18px }
-.subtitle { margin-bottom:12px; color:#666; font-size:13px }
-.group { width:100%; margin-bottom:12px }
-.label { display:block; font-size:14px; color:#333; margin-bottom:6px }
-.row { display:flex; align-items:center; gap:8px }
-.input { width:100%; border:1px solid #e6e6e6; border-radius:12px; padding:20px 14px; font-size:14px; background:#fafafa; box-sizing:border-box }
-.input:focus { border-color:#007AFF; background:#fff }
-.flex { flex:1 }
-.toggle { font-size:12px; padding:5px 10px; background:#f5f7ff; color:#2e5cff; border-radius:10px; box-sizing:border-box }
-.gender { width:50%; display:flex; gap:6px; justify-content:start }
-.gbtn { padding:2px 10px; border:1px solid #e0e0ff; border-radius:14px; background:#fff; color:#7e78ff; font-size:12px; box-sizing:border-box }
-.on { background:#e9e7ff }
-.err { margin-top:6px; font-size:12px; color:#e34a4a }
-.primary { width:100%; margin-top:8px; background:#2ecc71; color:#fff; border:none; border-radius:12px; font-weight:600 }
-.tip { margin-top:12px; color:#666 }
-.action { color:#7e78ff }
+<style scoped>
+/* 全局重置 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 页面容器：垂直水平居中 */
+.page {
+  min-height: 100vh;
+  background-color: #f5f7fa; /* 替换var(--page-bg) */
+  padding: 30rpx 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 注册卡片容器 */
+.register-container {
+  width: 100%;
+  max-width: 500rpx;
+}
+
+/* 核心卡片：简约白色卡片 */
+.card {
+  background: #ffffff; /* 替换var(--card-bg) */
+  border-radius: 12rpx;
+  padding: 48rpx 36rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08); /* 替换var(--card-shadow) */
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx;
+}
+
+/* 卡片头部：头像+标题组合 */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+/* 头像：简约风格 */
+.avatar-wrapper {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 12rpx;
+  background-color: #f0f4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-icon {
+  width: 48rpx;
+  height: 48rpx;
+  background-color: #4096ff; /* 替换var(--primary) */
+  border-radius: 8rpx;
+}
+
+/* 标题组 */
+.title-group {
+  flex: 1;
+}
+.page-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333333; /* 替换var(--text-main) */
+  margin-bottom: 6rpx;
+}
+.brand {
+  font-size: 28rpx;
+  color: #333333; /* 替换var(--text-main) */
+  margin-bottom: 4rpx;
+}
+.subtitle {
+  font-size: 22rpx;
+  color: #666666; /* 替换var(--text-secondary) */
+}
+
+/* 表单区域 */
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+/* 表单项组 */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+/* 输入框之间的分割线 */
+.form-group + .form-group {
+  position: relative;
+}
+
+.form-group + .form-group::before {
+  content: '';
+  position: absolute;
+  top: -12rpx;
+  left: 0;
+  right: 0;
+  height: 1rpx;
+  background-color: #93e1ef;
+}
+
+/* 输入框：简约轻量化 */
+.form-input {
+  height: 88rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #e5e7eb; /* 替换var(--border-normal) */
+  border-radius: 8rpx;
+  background-color: #f9fafb; /* 替换var(--input-bg) */
+  color: #333333; /* 替换var(--text-main) */
+  font-size: 28rpx;
+  transition: all 0.2s ease;
+}
+.form-input::placeholder {
+  color: #999999; /* 替换var(--text-placeholder) */
+}
+.form-input:focus {
+  border-color: #4096ff; /* 替换var(--border-active) */
+  background-color: #ffffff; /* 替换var(--card-bg) */
+  outline: none;
+  box-shadow: 0 0 0 4rpx rgba(64, 150, 255, 0.1); /* 替换var(--focus-shadow) */
+}
+
+/* 密码行 */
+.password-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+.password-input {
+  flex: 1;
+}
+
+/* 密码显示/隐藏按钮 */
+.pwd-toggle-btn {
+  height: 88rpx;
+  padding: 0 24rpx;
+  background-color: #f9fafb; /* 替换var(--input-bg) */
+  color: #4096ff; /* 替换var(--primary) */
+  border: 1rpx solid #e5e7eb; /* 替换var(--border-normal) */
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  transition: all 0.2s ease;
+}
+.pwd-toggle-btn:active {
+  background-color: #e8f3ff;
+  border-color: #69b1ff; /* 替换var(--primary-light) */
+}
+
+/* 性别选择器 */
+.gender-selector {
+  display: flex;
+  gap: 16rpx;
+}
+.gender-btn {
+  flex: 1;
+  height: 88rpx;
+  background-color: #f9fafb; /* 替换var(--input-bg) */
+  border: 1rpx solid #e5e7eb; /* 替换var(--border-normal) */
+  border-radius: 8rpx;
+  color: #333333; /* 替换var(--text-main) */
+  font-size: 28rpx;
+  transition: all 0.2s ease;
+}
+.gender-btn.active {
+  background-color: #e8f3ff;
+  border-color: #4096ff; /* 替换var(--primary) */
+  color: #4096ff; /* 替换var(--primary) */
+}
+
+/* 错误提示文字 */
+.error-text {
+  font-size: 24rpx;
+  color: #f53f3f; /* 替换var(--text-error) */
+  padding-left: 4rpx;
+}
+
+/* 分割线样式 */
+.divider {
+  height: 1rpx;
+  background-color: #03d1ff;
+  margin: 30rpx 0;
+}
+
+/* 性别选择器分割线 */
+.gender-selector {
+  position: relative;
+}
+.gender-selector::before,
+.gender-selector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rpx;
+  height: 50rpx;
+  background-color: #e5e7eb; /* 替换var(--border-normal) */
+}
+.gender-selector::before {
+  left: 33.33%;
+}
+.gender-selector::after {
+  left: 66.66%;
+}
+
+/* 操作区域 */
+.action-area {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+  margin-top: 8rpx;
+}
+
+/* 注册按钮 */
+.register-btn {
+  height: 96rpx;
+  background-color: #4096ff; /* 替换var(--primary) */
+  color: #ffffff;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.register-btn:active {
+  background-color: #3388ee; /* 替换var(--primary-hover) */
+  transform: scale(0.98);
+}
+.register-btn[disabled] {
+  background-color: #b3d1ff;
+  transform: none;
+}
+
+/* 登录提示 */
+.login-tip {
+  text-align: center;
+  font-size: 26rpx;
+  color: #666666; /* 替换var(--text-secondary) */
+}
+.login-link {
+  color: #4096ff; /* 替换var(--primary) */
+  font-weight: 500;
+  padding: 4rpx 8rpx;
+  border-radius: 4rpx;
+  transition: all 0.2s ease;
+}
+.login-link:active {
+  background-color: #e8f3ff;
+}
 </style>
