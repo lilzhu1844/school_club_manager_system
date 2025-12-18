@@ -1,6 +1,6 @@
 <template>
   <view class="page">
-
+    <view class="header"><text class="htitle">社团主页</text></view>
     <view class="hero">
       <image :src="club.logo || defaultCover" class="cover" mode="aspectFill" />
       <view class="overlay">
@@ -165,7 +165,8 @@ export default {
 
 <style>
 .page { min-height:100vh; background:#f7f8fa }
-
+.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.htitle { color:#fff; font-weight:600 }
 .hero { position:relative; margin:12px; }
 .cover { width:100%; height:160px; border-radius:12px; background:#ddd }
 .overlay { position:absolute; left:12px; right:12px; bottom:12px; display:flex; flex-direction:column; gap:6px; padding:8px 10px; border-radius:10px; background:transparent; }

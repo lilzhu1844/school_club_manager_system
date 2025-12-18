@@ -1,72 +1,31 @@
 <template>
   <view class="container">
-    <!-- 筛选区域 -->
+    <view class="header"><text class="htitle">首页</text></view>
     <view class="filters">
-      <!-- 搜索框 -->
-      <view class="search-wrapper">
-        <input class="search-input" placeholder="搜索社团" v-model="keyword" @confirm="doSearch" />
-      </view>
-      <!-- 分类标签栏 -->
-      <scroll-view class="category-scroll" scroll-x show-scrollbar="false">
-        <view class="category-list">
-          <button 
-            v-for="c in chipList" 
-            :key="c.key" 
-            class="category-tag" 
-            :class="{ active: c.key === selectedChipKey }" 
-            @tap="setCat(c)"
-          >
-            {{ c.name }}
-          </button>
+      <input class="search" placeholder="搜索社团" v-model="keyword" @confirm="doSearch" />
+      <scroll-view class="chips" scroll-x>
+        <view class="chipwrap">
+          <button v-for="c in chipList" :key="c.key" class="chip" :class="activeChipClass(c)" @tap="setCat(c)">{{ c.name }}</button>
         </view>
       </scroll-view>
     </view>
-
-    <!-- 社团列表 -->
-    <view class="club-grid">
-      <view 
-        v-for="item in list" 
-        :key="item.id" 
-        class="club-card" 
-        @tap="goDetail(item.id)"
-      >
-        <!-- 社团logo -->
-        <view class="card-header">
-          <image :src="item.logo" mode="aspectFill" class="club-logo" />
-        </view>
-        <!-- 社团信息 -->
-        <view class="card-body">
-          <text class="club-name">{{ item.name }}</text>
-          <text class="club-intro">{{ item.intro }}</text>
-          <!-- 底部信息+操作按钮 -->
-          <view class="card-footer">
-            <text class="activity-count">{{ (item.activities||[]).length }}个活动</text>
-            <button 
-              class="action-btn" 
-              :class="[
-                btnState(item.id)==='join' ? 'join-btn' : 
-                btnState(item.id)==='exit' ? 'exit-btn' : 'pending-btn'
-              ]" 
-              @tap.stop="btnState(item.id)==='join' ? join(item.id) : btnState(item.id)==='exit' ? exitClub(item.id) : ''"
-            >
-              {{ btnState(item.id)==='join' ? '加入' : btnState(item.id)==='exit' ? '退出' : '审批中' }}
-            </button>
+    <view class="grid">
+      <view v-for="item in list" :key="item.id" class="card" @tap="goDetail(item.id)">
+        <image :src="item.logo" mode="aspectFill" class="logo" />
+        <view class="info">
+          <text class="name">{{ item.name }}</text>
+          <text class="intro">{{ item.intro }}</text>
+          <view class="meta">
+            <text class="count">{{ (item.activities||[]).length }}个活动</text>
+            <button class="act" v-if="btnState(item.id)==='join'" @tap.stop="join(item.id)">加入</button>
+            <button class="act danger" v-else-if="btnState(item.id)==='exit'" @tap.stop="exitClub(item.id)">退出</button>
+            <button class="act disabled" v-else @tap.stop>审批中</button>
           </view>
         </view>
       </view>
     </view>
-
-    <!-- 加载状态 -->
-    <view v-if="loading" class="loading-tip">
-      <text>正在加载中...</text>
-    </view>
-
-    <!-- 空状态 -->
-    <view v-if="!loading && list.length===0" class="empty-state">
-      <view class="empty-icon">🏫</view>
-      <text class="empty-text">暂无社团</text>
-      <text class="empty-desc">换个分类或关键词试试吧</text>
-    </view>
+    <view v-if="loading" class="loading">加载中...</view>
+    <view v-if="!loading && list.length===0" class="empty">暂无社团</view>
   </view>
 </template>
 
@@ -154,205 +113,27 @@ export default {
 }
 </script>
 
-<style scoped>
-/* 全局重置 */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* 页面容器 */
-.container {
-  min-height: 100vh;
-  background-color: #f5f7fa;
-  padding: 24rpx 24rpx 40rpx 24rpx;
-}
-
-/* 筛选区域 */
-.filters {
-  display: flex;
-  flex-direction: column;
-  gap: 16rpx;
-  margin-bottom: 24rpx;
-}
-
-/* 搜索框 */
-.search-wrapper {
-  width: 100%;
-}
-.search-input {
-  width: 100%;
-  height: 88rpx;
-  padding: 0 24rpx;
-  background-color: #ffffff;
-  border: 1rpx solid #e5e7eb;
-  border-radius: 8rpx;
-  font-size: 28rpx;
-  color: #333333;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
-}
-.search-input::placeholder {
-  color: #999999;
-}
-
-/* 分类标签栏 */
-.category-scroll {
-  white-space: nowrap;
-  padding: 8rpx 0;
-}
-.category-list {
-  display: flex;
-  gap: 12rpx;
-  padding: 4rpx 2rpx;
-}
-.category-tag {
-  padding: 12rpx 24rpx;
-  background-color: #ffffff;
-  border: 1rpx solid #e5e7eb;
-  border-radius: 40rpx;
-  font-size: 28rpx;
-  color: #666666;
-  flex-shrink: 0;
-  transition: all 0.2s ease;
-}
-.category-tag.active {
-  background-color: #4096ff;
-  color: #ffffff;
-  border-color: #4096ff;
-  box-shadow: 0 2rpx 8rpx rgba(64, 150, 255, 0.2);
-}
-.category-tag:active {
-  transform: scale(0.95);
-}
-
-/* 社团列表网格 */
-.club-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20rpx;
-}
-
-/* 社团卡片 */
-.club-card {
-  width: calc(50% - 10rpx);
-  background-color: #ffffff;
-  border-radius: 12rpx;
-  overflow: hidden;
-  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-}
-.club-card:active {
-  transform: scale(0.98);
-  box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
-}
-
-/* 卡片头部（logo） */
-.card-header {
-  width: 100%;
-  height: 180rpx;
-  background-color: #f9fafb;
-  overflow: hidden;
-}
-.club-logo {
-  width: 100%;
-  height: 100%;
-}
-
-/* 卡片内容 */
-.card-body {
-  padding: 20rpx;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 12rpx;
-}
-.club-name {
-  font-size: 30rpx;
-  font-weight: 600;
-  color: #333333;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.club-intro {
-  font-size: 24rpx;
-  color: #666666;
-  line-height: 1.4;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  flex: 1;
-}
-
-/* 卡片底部 */
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 8rpx;
-}
-.activity-count {
-  font-size: 22rpx;
-  color: #999999;
-}
-.action-btn {
-  padding: 8rpx 20rpx;
-  border-radius: 40rpx;
-  font-size: 24rpx;
-  transition: all 0.2s ease;
-  border: none;
-}
-/* 加入按钮 */
-.join-btn {
-  background-color: #e8f3ff;
-  color: #4096ff;
-}
-/* 退出按钮 */
-.exit-btn {
-  background-color: #fef2f2;
-  color: #f53f3f;
-}
-/* 审批中按钮 */
-.pending-btn {
-  background-color: #f9fafb;
-  color: #999999;
-}
-.action-btn:active {
-  transform: scale(0.95);
-}
-
-/* 加载提示 */
-.loading-tip {
-  text-align: center;
-  padding: 40rpx 0;
-  color: #666666;
-  font-size: 28rpx;
-}
-
-/* 空状态 */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80rpx 0;
-  gap: 16rpx;
-}
-.empty-icon {
-  font-size: 80rpx;
-  margin-bottom: 8rpx;
-}
-.empty-text {
-  font-size: 30rpx;
-  color: #333333;
-  font-weight: 500;
-}
-.empty-desc {
-  font-size: 24rpx;
-  color: #999999;
-}
+<style>
+.container { padding: 0 12px 12px 12px; background:#f5f5f5; min-height:100vh }
+.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.htitle { color:#fff; font-weight:600 }
+.filters { display:flex; flex-direction:column; gap:8px; align-items:stretch; margin:12px 0 8px 0; background:#fff; border-radius:12px; padding:12px }
+.search { flex:1; border:1px solid #ddd; border-radius:20px; padding:8px 12px; background:#f6f6f6 }
+.chips { margin-top:8px; white-space:nowrap }
+.chipwrap { display:flex; gap:6px; flex-wrap:nowrap; padding:4px 2px }
+.chip { padding:6px 12px; border:1px solid #e0e0ff; border-radius:18px; background:#fff; color:#7e78ff; font-size:12px; flex-shrink:0 }
+.on { background:#e9e7ff }
+.grid { display:flex; flex-wrap:wrap; margin:-6px }
+.card { width: calc(50% - 12px); margin:6px; box-sizing:border-box; background:#fff; border-radius: 10px; padding: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column }
+.logo { width: 100%; height: 90px; border-radius: 6px; background: #eee }
+.info { margin-top: 6px; flex:1; display:flex; flex-direction:column }
+.name { font-weight: 600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.intro { color: #666; margin-top: 4px; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; line-height:18px; min-height:36px; font-size:12px }
+.meta { display:flex; align-items:center; justify-content:space-between; margin-top:auto }
+.count { color:#666 }
+.act { padding:1px 10px; border:1px solid #7e78ff; color:#7e78ff; border-radius:16px; background:#fff; font-size:12px }
+.danger { border-color:#e34a4a; color:#e34a4a }
+.disabled { border-color:#ddd; color:#999 }
+.loading { text-align:center; color:#666; padding:10px }
+.empty { text-align:center; color:#888; padding:12px; display:flex; align-items:center; justify-content:center; min-height:200px }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <view class="page">
-
+    <view class="header"><text class="htitle">活动详情</text></view>
   <view class="card">
       <text class="title">{{ subject || '活动' }}</text>
       <view class="row">
@@ -151,115 +151,18 @@
   </script>
   
   <style>
-  .page {
-    padding:0 24rpx 40rpx 24rpx;
-    background:#0F172A;
-    min-height:100vh;
-    --primary-color: #6366F1;
-    --primary-dark: #4F46E5;
-    --primary-light: #818CF8;
-    --secondary-color: #8B5CF6;
-    --bg-primary: #0F172A;
-    --bg-secondary: #1E293B;
-    --bg-card: #1E293B;
-    --text-primary: #F1F5F9;
-    --text-secondary: #94A3B8;
-    --border-color: #334155;
-    --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.5);
-    --shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.6);
-    --shadow-lg: 0 8rpx 32rpx rgba(0, 0, 0, 0.7);
-    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --gradient-card: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
-  }
-
-  
-
-  .card {
-    margin-top:24rpx;
-    background:var(--gradient-card);
-    border:2rpx solid var(--border-color);
-    border-radius:20rpx;
-    padding:32rpx;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .title {
-    font-size:36rpx;
-    font-weight:600;
-    margin-bottom:24rpx;
-    color:var(--text-primary);
-    line-height:1.4;
-  }
-
-  .row {
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    padding:20rpx 0;
-    border-top:2rpx solid var(--border-color);
-  }
-
-  .row:first-of-type {
-    border-top:none;
-  }
-
-  .key {
-    color:var(--text-secondary);
-    font-size:28rpx;
-    width:25%;
-    flex-shrink:0;
-  }
-
-  .val {
-    color:var(--text-primary);
-    font-size:28rpx;
-    width:70%;
-    text-align:right;
-    line-height:1.5;
-  }
-
-  .content-block {
-    margin-top:32rpx;
-    padding-top:32rpx;
-    border-top:2rpx solid var(--border-color);
-  }
-
-  .ctitle {
-    font-weight:600;
-    margin-bottom:20rpx;
-    display:block;
-    color:var(--text-primary);
-    font-size:32rpx;
-  }
-
-  .cbody {
-    color:var(--text-primary);
-    line-height:1.8;
-    font-size:28rpx;
-  }
-
-  .ops {
-    margin-top:40rpx;
-    display:flex;
-    justify-content:center;
-    padding:0 24rpx;
-  }
-
-  .apply {
-    width:100%;
-    border-radius:28rpx;
-    background:var(--gradient-primary);
-    color:var(--text-primary);
-    font-size:32rpx;
-    font-weight:600;
-    padding:24rpx 0;
-    border:2rpx solid var(--primary-color);
-    box-shadow: 0 0 20rpx rgba(99, 102, 241, 0.4);
-    transition: all 0.3s ease;
-  }
-
-  .apply:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 12rpx rgba(99, 102, 241, 0.3);
-  }
+  .page { padding:0 12px 20px 12px; background:#f5f5f5; min-height:100vh }
+  .header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; justify-content:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+  .htitle { color:#fff; font-weight:600 }
+  .card { margin-top:12px; background:#fff; border-radius:12px; padding:12px }
+  .title { font-size:16px; font-weight:600; margin-bottom:8px }
+  .row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-top:1px solid #f0f0f0 }
+  .row:first-of-type { border-top:none }
+  .key { color:#666 }
+  .val { color:#333 }
+  .content-block { margin-top:10px; padding-top:10px; border-top:1px solid #f0f0f0 }
+  .ctitle { font-weight:600; margin-bottom:6px; display:block }
+  .cbody { color:#333; line-height:1.6 }
+  .ops { margin-top:16px; display:flex; justify-content:center }
+  .apply { width:80%; border-radius:24px; background:#7e78ff; color:#fff }
   </style>
