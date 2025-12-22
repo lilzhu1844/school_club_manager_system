@@ -80,13 +80,13 @@ export default {
 
 <style>
 .container { padding:0 12px 12px 12px; background:#f4f4f4; min-height:100vh }
-.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
 .htitle { color:#fff; font-weight:600 }
 .filters { display:flex; flex-direction:column; gap:10px; margin-top:10px }
 .search { width:100%; border:1px solid #ddd; border-radius:20px; padding:10px 14px; background:#f6f6f6 }
 .seg { display:flex; gap:10px }
 .segbtn { flex:1; border:1px solid #ddd; border-radius:20px; background:#fff; color:#999; font-size:14px }
-.on { background:#7e78ff; color:#fff; border-color:#7e78ff }
+.on { background:#57c6e1; color:#fff; border-color:#57c6e1 }
 .card { background:#fff; border:1px solid #eaeaea; border-radius:12px; padding:10px 12px; margin:10px 0; }
 .card-head { display:flex; align-items:center; justify-content:space-between; }
 .title { font-weight:600 }

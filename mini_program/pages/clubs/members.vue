@@ -32,7 +32,7 @@ export default {
 
 <style>
 .page { min-height:100vh; background:#f7f8fa }
-.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
 .htitle { color:#fff; font-weight:600 }
 .list { padding:12px }
 .row { padding:8px; border-bottom:1px solid #f0f0f0 }

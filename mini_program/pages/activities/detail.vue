@@ -152,7 +152,7 @@
   
   <style>
   .page { padding:0 12px 20px 12px; background:#f5f5f5; min-height:100vh }
-  .header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; justify-content:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+  .header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; justify-content:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
   .htitle { color:#fff; font-weight:600 }
   .card { margin-top:12px; background:#fff; border-radius:12px; padding:12px }
   .title { font-size:16px; font-weight:600; margin-bottom:8px }
@@ -164,5 +164,5 @@
   .ctitle { font-weight:600; margin-bottom:6px; display:block }
   .cbody { color:#333; line-height:1.6 }
   .ops { margin-top:16px; display:flex; justify-content:center }
-  .apply { width:80%; border-radius:24px; background:#7e78ff; color:#fff }
+  .apply { width:80%; border-radius:24px; background:#57c6e1; color:#fff }
   </style>

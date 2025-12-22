@@ -165,7 +165,7 @@ export default {
 
 <style>
 .page { min-height:100vh; background:#f7f8fa }
-.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
 .htitle { color:#fff; font-weight:600 }
 .hero { position:relative; margin:12px; }
 .cover { width:100%; height:160px; border-radius:12px; background:#ddd }
@@ -178,7 +178,7 @@ export default {
 .lab { font-size:12px; color:#f0f0f0; text-shadow:0 1px 2px rgba(0,0,0,0.25) }
 .actions { margin:8px 12px; background:#fff; border-radius:12px; display:flex; justify-content:space-around; padding:10px 8px; box-shadow:0 6px 12px rgba(0,0,0,0.04) }
 .action { display:flex; flex-direction:column; align-items:center; gap:6px }
-.icon { width:42px; height:42px; border-radius:50%; background:#e9e7ff; color:#7e78ff; display:flex; align-items:center; justify-content:center; font-weight:700 }
+.icon { width:42px; height:42px; border-radius:50%; background:#e9f7fb; color:#57c6e1; display:flex; align-items:center; justify-content:center; font-weight:700 }
 .aname { font-size:12px; color:#666 }
 .section { margin:12px; background:#fff; border-radius:12px; padding:12px; box-shadow:0 6px 12px rgba(0,0,0,0.04) }
 .sectitle { font-weight:600; margin-bottom:8px }
@@ -190,7 +190,7 @@ export default {
 .info { display:flex; flex-direction:column }
 .rtitle { font-weight:600 }
 .rmeta { display:block; color:#666; margin-top:4px }
-.signin { background:#7e78ff; color:#fff }
+.signin { background:#57c6e1; color:#fff }
 .signout { background:#e34a4a; color:#fff }
 .dur { color:#666 }
 .bottom { padding:0 12px 20px 12px }

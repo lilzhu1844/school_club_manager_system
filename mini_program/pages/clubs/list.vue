@@ -115,14 +115,14 @@ export default {
 
 <style>
 .container { padding: 0 12px 12px 12px; background:#f5f5f5; min-height:100vh }
-.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
 .htitle { color:#fff; font-weight:600 }
 .filters { display:flex; flex-direction:column; gap:8px; align-items:stretch; margin:12px 0 8px 0; background:#fff; border-radius:12px; padding:12px }
 .search { flex:1; border:1px solid #ddd; border-radius:20px; padding:8px 12px; background:#f6f6f6 }
 .chips { margin-top:8px; white-space:nowrap }
 .chipwrap { display:flex; gap:6px; flex-wrap:nowrap; padding:4px 2px }
-.chip { padding:6px 12px; border:1px solid #e0e0ff; border-radius:18px; background:#fff; color:#7e78ff; font-size:12px; flex-shrink:0 }
-.on { background:#e9e7ff }
+.chip { padding:6px 12px; border:1px solid #e0f0f5; border-radius:18px; background:#fff; color:#57c6e1; font-size:12px; flex-shrink:0 }
+.on { background:#e9f7fb }
 .grid { display:flex; flex-wrap:wrap; margin:-6px }
 .card { width: calc(50% - 12px); margin:6px; box-sizing:border-box; background:#fff; border-radius: 10px; padding: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column }
 .logo { width: 100%; height: 90px; border-radius: 6px; background: #eee }
@@ -131,7 +131,7 @@ export default {
 .intro { color: #666; margin-top: 4px; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; line-height:18px; min-height:36px; font-size:12px }
 .meta { display:flex; align-items:center; justify-content:space-between; margin-top:auto }
 .count { color:#666 }
-.act { padding:1px 10px; border:1px solid #7e78ff; color:#7e78ff; border-radius:16px; background:#fff; font-size:12px }
+.act { padding:1px 10px; border:1px solid #57c6e1; color:#57c6e1; border-radius:16px; background:#fff; font-size:12px }
 .danger { border-color:#e34a4a; color:#e34a4a }
 .disabled { border-color:#ddd; color:#999 }
 .loading { text-align:center; color:#666; padding:10px }

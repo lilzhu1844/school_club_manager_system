@@ -128,7 +128,7 @@ export default {
 
 <style>
 .page { padding:0 12px 20px 12px; background:#f5f5f5; min-height:100vh }
-.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; justify-content:space-between; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; justify-content:space-between; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
 .htitle { color:#fff; font-weight:600 }
 .back { background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.6); border-radius:16px; padding:6px 10px }
 .panel { margin-top:12px; background:#fff; border-radius:12px; padding:10px }
@@ -142,10 +142,10 @@ export default {
 .val { color:#333; flex:1; text-align:right }
 .ipt { border:1px solid #eee; border-radius:8px; padding:6px 8px; text-align:left; background:#fafafa }
 .gender { display:flex; justify-content:flex-end; gap:8px }
-.gbtn { padding:6px 12px; border:1px solid #e0e0ff; border-radius:16px; background:#fff; color:#7e78ff }
-.on { background:#e9e7ff }
+.gbtn { padding:6px 12px; border:1px solid #e0f0f5; border-radius:16px; background:#fff; color:#57c6e1 }
+.on { background:#e9f7fb }
 .btnrow { display:flex; gap:10px; margin-top:16px }
 .save, .cancel { flex:1; border-radius:24px; padding:10px 0; color:#fff }
-.save { background:#7e78ff }
+.save { background:#57c6e1 }
 .cancel { background:#999 }
 </style>

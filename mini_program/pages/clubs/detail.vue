@@ -145,7 +145,7 @@
   
   <style>
   .page { padding:56px 12px calc(env(safe-area-inset-bottom) + 88px) 12px; background:#f5f5f5; min-height:100vh }
-  .nav { position:fixed; left:0; right:0; top:0; height:48px; background:#7e78ff; display:flex; align-items:center; padding:0 12px; z-index:10 }
+  .nav { position:fixed; left:0; right:0; top:0; height:48px; background:#57c6e1; display:flex; align-items:center; padding:0 12px; z-index:10 }
   .back { width:32px; height:32px; line-height:32px; text-align:center; color:#fff; font-size:18px; }
   .nav-title { flex:1; text-align:center; color:#fff; font-weight:600; }
   .strip { height:32px; background:#bdbdbd; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; margin-top:8px }
@@ -155,11 +155,11 @@
   .overlay { position:absolute; left:12px; bottom:12px; right:12px; display:flex; flex-direction:column; align-items:flex-start; padding:8px 10px; border-radius:8px; background:linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.35)); }
   .btitle { color:#fff; font-size:18px; font-weight:700; text-shadow:0 2px 4px rgba(0,0,0,0.35) }
   .chips { margin-top:8px; display:flex; gap:8px }
-  .chip { padding:6px 10px; border-radius:16px; background:rgba(126,120,255,0.95); color:#fff; font-size:12px }
+  .chip { padding:6px 10px; border-radius:16px; background:rgba(87,198,225,0.95); color:#fff; font-size:12px }
   .stats { margin-top:12px; background:#fff; border-radius:12px; display:flex; overflow:hidden; box-shadow:0 6px 12px rgba(0,0,0,0.04) }
   .stat { flex:1; padding:14px 0; display:flex; flex-direction:column; align-items:center; }
   .stat + .stat { border-left:1px solid #f0f0f0 }
-  .num { font-size:22px; font-weight:700; color:#7e78ff; line-height:26px }
+  .num { font-size:22px; font-weight:700; color:#57c6e1; line-height:26px }
   .lab { font-size:12px; color:#666; margin-top:4px }
   .card { margin-top:12px; background:#fff; border-radius:12px; padding:12px }
   .ctitle { font-weight:600; margin-bottom:8px }
@@ -169,6 +169,6 @@
   .key { color:#666 }
   .val { color:#333 }
   .bottom { position:fixed; left:0; right:0; bottom:0; padding:10px 12px calc(env(safe-area-inset-bottom) + 10px); background:transparent }
-  .join { width:100%; background:linear-gradient(90deg,#7e78ff 0%, #6a64ff 100%); color:#fff; border-radius:24px }
+  .join { width:100%; background:linear-gradient(90deg,#57c6e1 0%, #3da8e9 100%); color:#fff; border-radius:24px }
   .join[disabled] { opacity:0.6 }
   </style>

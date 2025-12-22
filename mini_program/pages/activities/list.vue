@@ -90,14 +90,14 @@ export default {
 
 <style>
 .container { padding:12px; background:#f7f8fa; min-height:100vh }
-.seg { display:flex; gap:12px; align-items:center; margin-bottom:12px; background:#eef0ff; border:1px solid #e6e7fb; border-radius:8px; padding:6px }
+.seg { display:flex; gap:12px; align-items:center; margin-bottom:12px; background:#e9f7fb; border:1px solid #e0f0f5; border-radius:8px; padding:6px }
 .seg-item { flex:1; text-align:center; padding:8px 0; border-radius:6px; color:#666 }
-.seg-item.active { background:#7e78ff; color:#fff; font-weight:600 }
-.row { padding:12px; background:#fff; border:1px solid #e4e6ff; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.04); display:flex; align-items:center; justify-content:space-between; margin-bottom:12px }
+.seg-item.active { background:#57c6e1; color:#fff; font-weight:600 }
+.row { padding:12px; background:#fff; border:1px solid #e0f0f5; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.04); display:flex; align-items:center; justify-content:space-between; margin-bottom:12px }
 .row:last-child { margin-bottom:0 }
 .info { display:flex; flex-direction:column }
 .title { font-weight:600 }
 .meta { display:block; color:#666; margin-top:4px }
-.enter { color:#7e78ff; font-weight:700 }
+.enter { color:#57c6e1; font-weight:700 }
 .empty { text-align:center; color:#888; padding:12px }
 </style>

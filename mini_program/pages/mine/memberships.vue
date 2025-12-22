@@ -87,9 +87,9 @@ export default {
 
 <style>
 .page { padding:0 12px 20px 12px; background:#f5f5f5; min-height:100vh }
-.header { height: 88rpx; background: #7e78ff; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
 .htitle { color:#fff; font-weight:600 }
-.hero { margin-top:12px; background:#7e78ff; border-radius:12px; padding:18px; display:flex; flex-direction:column; align-items:center; color:#fff }
+.hero { margin-top:12px; background:#57c6e1; border-radius:12px; padding:18px; display:flex; flex-direction:column; align-items:center; color:#fff }
 .avatar { width:72px; height:72px; border-radius:50%; border:2px solid #fff; background:transparent }
 .uname { margin-top:10px }
 .stats { margin-top:14px; width:100%; display:flex; justify-content:space-around }
@@ -103,6 +103,6 @@ export default {
 .key { color:#666 }
 .val { color:#333 }
 .btnrow { display:flex; gap:10px; margin-top:16px; width:100%; margin-left:0; margin-right:0 }
-.edit { flex:1; background:#7e78ff; color:#fff; border-radius:24px }
+.edit { flex:1; background:#57c6e1; color:#fff; border-radius:24px }
 .logout { flex:1; background:#e34a4a; color:#fff; border-radius:24px }
 </style>
