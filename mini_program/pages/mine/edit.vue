@@ -1,69 +1,40 @@
 <template>
   <view class="page">
-    <!-- 核心卡片容器（垂直居中+适配） -->
-    <view class="edit-container">
-      <view class="card">
-        <!-- 卡片头部：标题+返回逻辑保留 -->
-        <view class="card-header">
-          <view class="page-title">编辑资料</view>
-        </view>
-
-        <!-- 头像区域 -->
-        <view class="avatar-section" @tap="chooseAvatar">
-          <view class="avatar-wrapper">
-            <image :src="avatarUrl || defaultAvatar" class="avatar-img" mode="aspectFill" />
-            <view class="avatar-mask">
-              <text class="avatar-tip">更换头像</text>
-            </view>
-          </view>
-        </view>
-
-        <!-- 分割线 -->
-        <view class="divider"></view>
-
-        <!-- 表单区域 -->
-        <view class="form-content">
-          <!-- 姓名 -->
-          <view class="form-item">
-            <text class="form-label">姓名</text>
-            <input class="form-input" v-model="form.name" placeholder="请输入姓名" />
-          </view>
-
-          <!-- 手机号 -->
-          <view class="form-item">
-            <text class="form-label">手机号</text>
-            <input class="form-input" v-model="form.phone" placeholder="请输入手机号" />
-          </view>
-
-          <!-- 性别 -->
-          <view class="form-item">
-            <text class="form-label">性别</text>
-            <view class="gender-selector">
-              <button class="gender-btn" :class="{ active: form.gender==='male' }" @tap="form.gender='male'">男</button>
-              <button class="gender-btn" :class="{ active: form.gender==='female' }" @tap="form.gender='female'">女</button>
-              <button class="gender-btn" :class="{ active: form.gender==='secret' }" @tap="form.gender='secret'">保密</button>
-            </view>
-          </view>
-
-          <!-- 学院 -->
-          <view class="form-item">
-            <text class="form-label">学院</text>
-            <input class="form-input" v-model="form.college" placeholder="请输入学院" />
-          </view>
-
-          <!-- 学号 -->
-          <view class="form-item">
-            <text class="form-label">学号</text>
-            <input class="form-input" v-model="form.student_no" placeholder="请输入学号" />
-          </view>
-        </view>
-
-        <!-- 操作按钮区 -->
-        <view class="action-btns">
-          <button class="cancel-btn" @tap="goBack">取消</button>
-          <button class="save-btn" @tap="submit">保存</button>
+    <view class="header"><text class="htitle">编辑资料</text></view>
+    <view class="panel">
+      <view class="avatarBox" @tap="chooseAvatar">
+        <image :src="avatarUrl || defaultAvatar" class="avatarImg" mode="aspectFill" />
+        <text class="avatarTip">点击头像修改</text>
+      </view>
+      <view class="ptitle">基本信息</view>
+      <view class="item">
+        <text class="key">姓名</text>
+        <input class="val ipt" v-model="form.name" placeholder="请输入姓名" />
+      </view>
+      <view class="item">
+        <text class="key">手机号</text>
+        <input class="val ipt" v-model="form.phone" placeholder="请输入手机号" />
+      </view>
+      <view class="item">
+        <text class="key">性别</text>
+        <view class="val gender">
+          <button class="gbtn" :class="form.gender==='male'?'on':''" @tap="form.gender='male'">男</button>
+          <button class="gbtn" :class="form.gender==='female'?'on':''" @tap="form.gender='female'">女</button>
+          <button class="gbtn" :class="form.gender==='secret'?'on':''" @tap="form.gender='secret'">保密</button>
         </view>
       </view>
+      <view class="item">
+        <text class="key">学院</text>
+        <input class="val ipt" v-model="form.college" placeholder="请输入学院" />
+      </view>
+      <view class="item">
+        <text class="key">学号</text>
+        <input class="val ipt" v-model="form.student_no" placeholder="请输入学号" />
+      </view>
+    </view>
+    <view class="btnrow">
+      <button class="save" @tap="submit">保存</button>
+      <button class="cancel" @tap="goBack">取消</button>
     </view>
   </view>
 </template>
@@ -155,184 +126,26 @@ export default {
 }
 </script>
 
-<style scoped>
-/* 全局重置 */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* 页面容器：垂直居中+适配 */
-.page {
-  min-height: 100vh;
-  background-color: #f5f7fa; /* 替换var(--page-bg) */
-  padding: 30rpx 24rpx;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* 顶部对齐，避免内容过长溢出 */
-  padding-top: 60rpx;
-}
-
-/* 编辑容器：宽度限制 */
-.edit-container {
-  width: 100%;
-  max-width: 500rpx;
-}
-
-/* 核心卡片：简约白色卡片 */
-.card {
-  background: #ffffff; /* 替换var(--card-bg) */
-  border-radius: 12rpx;
-  padding: 40rpx 32rpx;
-  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08); /* 替换var(--card-shadow) */
-  display: flex;
-  flex-direction: column;
-  gap: 36rpx;
-}
-
-/* 卡片头部：标题 */
-.card-header {
-  text-align: center;
-}
-.page-title {
-  font-size: 36rpx;
-  font-weight: 600;
-  color: #333333; /* 替换var(--text-main) */
-}
-
-/* 头像区域：简约风格 */
-.avatar-section {
-  display: flex;
-  justify-content: center;
-}
-.avatar-wrapper {
-  position: relative;
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2rpx solid #e5e7eb; /* 替换var(--border-normal) */
-}
-.avatar-img {
-  width: 100%;
-  height: 100%;
-}
-.avatar-mask {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60rpx;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.avatar-tip {
-  color: #ffffff;
-  font-size: 24rpx;
-}
-
-/* 分割线 */
-.divider {
-  width: 100%;
-  height: 1rpx;
-  background-color: #e5e7eb; /* 替换var(--border-normal) */
-  margin: 8rpx 0;
-}
-
-/* 表单区域 */
-.form-content {
-  display: flex;
-  flex-direction: column;
-  gap: 28rpx;
-}
-
-/* 表单项：移动端上下布局（更友好） */
-.form-item {
-  display: flex;
-  flex-direction: column;
-  gap: 12rpx;
-}
-.form-label {
-  font-size: 28rpx;
-  color: #333333; /* 替换var(--text-main) */
-  font-weight: 500;
-}
-.form-input {
-  height: 88rpx;
-  padding: 0 24rpx;
-  border: 1rpx solid #e5e7eb; /* 替换var(--border-normal) */
-  border-radius: 8rpx;
-  background-color: #f9fafb; /* 替换var(--input-bg) */
-  color: #333333; /* 替换var(--text-main) */
-  font-size: 28rpx;
-  transition: all 0.2s ease;
-}
-.form-input::placeholder {
-  color: #999999; /* 替换var(--text-placeholder) */
-}
-.form-input:focus {
-  border-color: #4096ff; /* 替换var(--border-active) */
-  background-color: #ffffff; /* 替换var(--card-bg) */
-  outline: none;
-  box-shadow: 0 0 0 4rpx rgba(64, 150, 255, 0.1); /* 替换var(--focus-shadow) */
-}
-
-/* 性别选择器 */
-.gender-selector {
-  display: flex;
-  gap: 16rpx;
-}
-.gender-btn {
-  flex: 1;
-  height: 88rpx;
-  background-color: #f9fafb; /* 替换var(--input-bg) */
-  border: 1rpx solid #e5e7eb; /* 替换var(--border-normal) */
-  border-radius: 8rpx;
-  color: #333333; /* 替换var(--text-main) */
-  font-size: 28rpx;
-  transition: all 0.2s ease;
-}
-.gender-btn.active {
-  background-color: #e8f3ff;
-  border-color: #4096ff; /* 替换var(--primary) */
-  color: #4096ff; /* 替换var(--primary) */
-}
-
-/* 操作按钮区：横向排列，主次分明 */
-.action-btns {
-  display: flex;
-  gap: 20rpx;
-  margin-top: 16rpx;
-}
-.cancel-btn, .save-btn {
-  flex: 1;
-  height: 96rpx;
-  border-radius: 8rpx;
-  font-size: 30rpx;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-/* 取消按钮：次要按钮 */
-.cancel-btn {
-  background-color: #f9fafb; /* 替换var(--input-bg) */
-  color: #666666; /* 替换var(--text-secondary) */
-  border: 1rpx solid #e5e7eb; /* 替换var(--border-normal) */
-}
-.cancel-btn:active {
-  background-color: #f0f2f5;
-  transform: scale(0.98);
-}
-/* 保存按钮：主要按钮 */
-.save-btn {
-  background-color: #4096ff; /* 替换var(--primary) */
-  color: #ffffff;
-  border: none;
-}
-.save-btn:active {
-  background-color: #3388ee; /* 替换var(--primary-hover) */
-  transform: scale(0.98);
-}
+<style>
+.page { padding:0 12px 20px 12px; background:#f5f5f5; min-height:100vh }
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; justify-content:space-between; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.htitle { color:#fff; font-weight:600 }
+.back { background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.6); border-radius:16px; padding:6px 10px }
+.panel { margin-top:12px; background:#fff; border-radius:12px; padding:10px }
+.avatarBox { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px 0 }
+.avatarImg { width:96px; height:96px; border-radius:50%; background:#eee }
+.avatarTip { color:#999; font-size:12px; margin-top:6px }
+.ptitle { font-weight:600; margin-bottom:6px }
+.item { display:flex; justify-content:space-between; align-items:center; padding:10px 6px; border-top:1px solid #f0f0f0 }
+.item:first-of-type { border-top:none }
+.key { color:#666; min-width:72px }
+.val { color:#333; flex:1; text-align:right }
+.ipt { border:1px solid #eee; border-radius:8px; padding:6px 8px; text-align:left; background:#fafafa }
+.gender { display:flex; justify-content:flex-end; gap:8px }
+.gbtn { padding:6px 12px; border:1px solid #e0f0f5; border-radius:16px; background:#fff; color:#57c6e1 }
+.on { background:#e9f7fb }
+.btnrow { display:flex; gap:10px; margin-top:16px }
+.save, .cancel { flex:1; border-radius:24px; padding:10px 0; color:#fff }
+.save { background:#57c6e1 }
+.cancel { background:#999 }
 </style>

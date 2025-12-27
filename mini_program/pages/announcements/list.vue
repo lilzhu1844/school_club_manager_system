@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-
+    <view class="header"><text class="htitle">公告与活动</text></view>
     <view class="filters">
       <input class="search" placeholder="搜索公告或活动" v-model="keyword" @confirm="doSearch" />
       <view class="seg">
@@ -79,132 +79,18 @@ export default {
 </script>
 
 <style>
-.container {
-  padding:0 24rpx 24rpx 24rpx;
-  background:#0F172A;
-  min-height:100vh;
-  --primary-color: #6366F1;
-  --primary-dark: #4F46E5;
-  --primary-light: #818CF8;
-  --secondary-color: #8B5CF6;
-  --bg-primary: #0F172A;
-  --bg-secondary: #1E293B;
-  --bg-card: #1E293B;
-  --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
-  --border-color: #334155;
-  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 8rpx 32rpx rgba(0, 0, 0, 0.7);
-  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  --gradient-card: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
-}
-
-
-
-.filters {
-  display:flex;
-  flex-direction:column;
-  gap:20rpx;
-  margin-top:20rpx;
-}
-
-.search {
-  width:100%;
-  border:2rpx solid var(--border-color);
-  border-radius:24rpx;
-  padding:20rpx 24rpx;
-  background:var(--bg-secondary);
-  color:var(--text-primary);
-  font-size:28rpx;
-  box-shadow: var(--shadow-sm);
-  box-sizing: border-box;
-}
-
-.search::placeholder {
-  color:var(--text-secondary);
-}
-
-.seg {
-  display:flex;
-  gap:20rpx;
-}
-
-.segbtn {
-  flex:1;
-  border:2rpx solid var(--border-color);
-  border-radius:24rpx;
-  background:var(--bg-secondary);
-  color:var(--text-secondary);
-  font-size:28rpx;
-  padding:20rpx 0;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
-}
-
-.segbtn.on {
-  background:var(--gradient-primary);
-  color:var(--text-primary);
-  border-color:var(--primary-color);
-  box-shadow: 0 0 20rpx rgba(99, 102, 241, 0.4);
-}
-
-.segbtn:active {
-  transform: scale(0.95);
-}
-
-.card {
-  background:var(--gradient-card);
-  border:2rpx solid var(--border-color);
-  border-radius:20rpx;
-  padding:24rpx;
-  margin:20rpx 0;
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
-}
-
-.card:active {
-  transform: scale(0.98);
-  box-shadow: var(--shadow-sm);
-}
-
-.card-head {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:12rpx;
-}
-
-.title {
-  font-weight:600;
-  color:var(--text-primary);
-  font-size:32rpx;
-  flex:1;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.meta {
-  display:block;
-  color:var(--text-secondary);
-  margin-top:12rpx;
-  font-size:26rpx;
-}
-
-.tag {
-  padding:4rpx 16rpx;
-  background:var(--primary-color);
-  color:var(--text-primary);
-  border-radius:16rpx;
-  font-size:22rpx;
-  box-shadow: 0 0 12rpx rgba(99, 102, 241, 0.3);
-}
-
-.empty {
-  text-align:center;
-  color:var(--text-secondary);
-  padding:48rpx;
-  font-size:28rpx;
-}
+.container { padding:0 12px 12px 12px; background:#f4f4f4; min-height:100vh }
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.htitle { color:#fff; font-weight:600 }
+.filters { display:flex; flex-direction:column; gap:10px; margin-top:10px }
+.search { width:100%; border:1px solid #ddd; border-radius:20px; padding:10px 14px; background:#f6f6f6 }
+.seg { display:flex; gap:10px }
+.segbtn { flex:1; border:1px solid #ddd; border-radius:20px; background:#fff; color:#999; font-size:14px }
+.on { background:#57c6e1; color:#fff; border-color:#57c6e1 }
+.card { background:#fff; border:1px solid #eaeaea; border-radius:12px; padding:10px 12px; margin:10px 0; }
+.card-head { display:flex; align-items:center; justify-content:space-between; }
+.title { font-weight:600 }
+.meta { display:block; color:#666; margin-top:6px }
+.tag { padding:2px 8px; background:#2ecc71; color:#fff; border-radius:12px; font-size:12px }
+.empty { text-align:center; color:#888; padding:12px }
 </style>

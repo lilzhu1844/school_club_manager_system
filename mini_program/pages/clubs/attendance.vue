@@ -1,6 +1,6 @@
 <template>
   <view class="page">
-
+    <view class="header"><text class="htitle">考勤</text></view>
     <view class="list">
       <view v-for="it in list" :key="it.id" class="row">
         <view class="col">
@@ -82,7 +82,8 @@ export default {
 
 <style>
 .page { min-height:100vh; background:#f7f8fa }
-
+.header { height: 88rpx; background: #57c6e1; display:flex; align-items:center; padding:0 12px; border-bottom-left-radius:12px; border-bottom-right-radius:12px }
+.htitle { color:#fff; font-weight:600 }
 .sum { color:#fff; margin-left:12px; font-size: 24rpx }
 .list { padding:12px }
 .row { padding:8px; border-bottom:1px solid #f0f0f0; display:flex; align-items:center; justify-content:space-between; gap:8px }
