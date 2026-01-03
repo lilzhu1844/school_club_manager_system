@@ -128,6 +128,6 @@ onMounted(() => {
 }
 .current-club {
     font-weight: bold;
-    color: #409EFF;
+    color: #57c6e1;
 }
 </style>

@@ -6,7 +6,7 @@
           <img src="@/assets/logo.svg" alt="Logo" class="logo-img" />
           <span class="logo-text">高校社团管理系统</span>
         </div>
-        <el-menu active-text-color="#409EFF" background-color="#304156" class="el-menu-vertical" text-color="#bfcbd9"
+        <el-menu active-text-color="#57c6e1" background-color="#304156" class="el-menu-vertical" text-color="#bfcbd9"
           :default-active="$route.path" router>
           <el-menu-item index="/dashboard">
             <el-icon>

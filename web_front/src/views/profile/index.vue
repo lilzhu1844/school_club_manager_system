@@ -253,7 +253,7 @@ const handleUpload = async (options) => {
   text-align: center;
 }
 .text-muted {
-  color: #777;
+  color: #909399;
 }
 .user-profile {
   .user-name {
@@ -270,7 +270,7 @@ const handleUpload = async (options) => {
   .box-social {
     padding-top: 30px;
     .el-table {
-      border-top: 1px solid #dfe6ec;
+      border-top: 1px solid #dcdfe6;
     }
   }
   .user-bio {
@@ -283,7 +283,7 @@ const handleUpload = async (options) => {
       font-size: 14px;
       padding: 15px 0;
       .user-bio-section-header {
-        border-bottom: 1px solid #dfe6ec;
+        border-bottom: 1px solid #dcdfe6;
         padding-bottom: 10px;
         margin-bottom: 10px;
         font-weight: bold;

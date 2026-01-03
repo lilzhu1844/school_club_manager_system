@@ -370,6 +370,13 @@ const handleLogin = async () => {
 
 .login-btn {
   width: 100%;
+  background-color: #57c6e1;
+  border-color: #57c6e1;
+}
+
+.login-btn:hover {
+  background-color: #8dd9e9;
+  border-color: #8dd9e9;
 }
 
 .form-options {
@@ -393,14 +400,24 @@ const handleLogin = async () => {
 .captcha-img {
   height: 40px;
   cursor: pointer;
-  border: 1px solid #dcdfe6;
+  border: 1px solid #cceef7;
   border-radius: 4px;
 }
 
 .register-link {
-  color: #409eff;
+  color: #57c6e1;
   cursor: pointer;
   font-size: 14px;
+}
+
+.dialog-footer .el-button--primary {
+  background-color: #57c6e1;
+  border-color: #57c6e1;
+}
+
+.dialog-footer .el-button--primary:hover {
+  background-color: #8dd9e9;
+  border-color: #8dd9e9;
 }
 
 .logo-upload-container {

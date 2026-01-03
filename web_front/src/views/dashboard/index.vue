@@ -135,7 +135,7 @@ onMounted(async () => {
   display: flex;
   justify-content: space-between;
   padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #e9e9e9;
 }
 .list-item:last-child {
   border-bottom: none;
@@ -180,7 +180,7 @@ onMounted(async () => {
 .stat-val {
   font-size: 20px;
   font-weight: bold;
-  color: #409EFF;
+  color: #57c6e1;
 }
 .stat-label {
   font-size: 12px;
